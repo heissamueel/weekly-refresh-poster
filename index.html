@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Weekly Refresh Poster Maker</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--bg:#f4f4f2;--card:#fff;--ink:#1b1b1b;--mute:#666;--line:#d9d9d4;--acc:#b9852f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121416;--card:#1c1f22;--ink:#eee;--mute:#9aa;--line:#33383c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 Inter,system-ui,sans-serif}
+.app{max-width:560px;margin:0 auto;padding:16px}
+h1{font:600 20px 'Source Serif 4',Georgia,serif;margin:4px 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px}
+label{display:block;font-size:12px;color:var(--mute);margin:10px 0 4px;text-transform:uppercase;letter-spacing:.06em}
+label:first-child{margin-top:0}
+input[type=text],textarea{width:100%;font:inherit;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:10px;padding:10px}
+textarea{resize:vertical;min-height:70px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 14px;font:inherit;cursor:pointer}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+input[type=range]{width:100%}
+.row{display:flex;gap:10px}.row>*{flex:1}
+.btn{width:100%;padding:13px;border-radius:12px;border:0;background:var(--acc);color:#fff;font:600 15px Inter,sans-serif;cursor:pointer}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-height:340px;overflow-y:auto}.th{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px;border:2px solid transparent;cursor:pointer}.th.on{border-color:var(--acc)}
+.btn2{display:block;text-align:center;padding:12px;border:1px dashed var(--mute);border-radius:10px;cursor:pointer}
+.hint{font-size:12px;color:var(--mute);margin:8px 0 0}
+#holder{width:100%;position:relative;overflow:hidden;border-radius:10px}
+#poster{width:1080px;height:1350px;position:absolute;top:0;left:0;transform-origin:top left;overflow:hidden;background:#222;color:#fff}
+#bg,#dim{position:absolute;inset:-60px}
+#bg svg,#bg div{width:100%;height:100%;display:block}
+#bg div{background-size:cover;background-position:center}
+#poster .in{position:absolute;inset:0;padding:110px 100px 90px;display:flex;flex-direction:column}
+.tag{font:600 26px Inter,sans-serif;letter-spacing:.38em;text-transform:uppercase;opacity:.9}
+.bar{width:90px;height:3px;background:#e9c27a;margin:26px 0 56px}
+.ref{font:600 30px Inter,sans-serif;opacity:.85;margin-bottom:18px}
+.verse{font:400 70px/1.2 'Source Serif 4',Georgia,serif;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.dec{margin-top:auto;display:flex;flex-direction:column;gap:26px}
+.dec p{margin:0;font:400 33px/1.35 'Source Serif 4',Georgia,serif;padding-left:70px;position:relative;text-shadow:0 1px 14px rgba(0,0,0,.4)}
+.dec p b{position:absolute;left:0;top:2px;font:600 26px Inter,sans-serif;color:#e9c27a}
+.end{margin-top:48px;font:italic 400 38px 'Source Serif 4',Georgia,serif;color:#f1d9a3}
+body.view .ctl{display:none}
+body.view .app{padding:0;max-width:none}
+body.view #holder{border-radius:0}
+#exit{display:none;position:fixed;top:calc(env(safe-area-inset-top,0px) + 8px);right:8px;z-index:5;background:rgba(0,0,0,.55);color:#fff;border:0;border-radius:999px;padding:8px 14px;font:inherit}
+body.view #exit{display:block}
+</style>
+</head>
+<body>
+<button id="exit">Exit</button>
+<div class="app">
+<h1 class="ctl">Weekly Refresh Poster Maker</h1>
+
+<div id="holder"><div id="poster">
+  <div id="bg"></div><div id="dim"></div>
+  <div class="in">
+    <div class="tag" id="oTag"></div><div class="bar"></div>
+    <div class="ref" id="oRef"></div>
+    <div class="verse" id="oVerse"></div>
+    <div class="dec" id="oDec"></div>
+    <div class="end" id="oEnd"></div>
+  </div>
+</div></div>
+
+<div class="ctl" style="margin-top:14px">
+<div class="card">
+  <label>Title</label><input type="text" id="tag" value="Weekly Refresh">
+  <label>Verse</label><textarea id="verse">“The LORD shall fight for you, and ye shall hold your peace.”</textarea>
+  <label>Reference</label><input type="text" id="ref" value="Exodus 14:14 KJV">
+  <label>Decrees (one per line)</label>
+  <textarea id="dec" rows="6">The Lord shall arise and fight our battles. Every power contending with our destiny shall be silenced.
+Every trap set against us and our families shall be destroyed, and every closed door shall be opened.
+We shall experience supernatural deliverance, uncommon favour, and victory on every side.
+Before this year ends, we shall have undeniable testimonies of God’s goodness.</textarea>
+  <label>Closing line</label><input type="text" id="end" value="In Jesus’ mighty name. Amen!">
+</div>
+
+<div class="card">
+  <label>Photos</label><div class="thumbs" id="thumbs"></div>
+  <label>Illustrated scenes</label>
+  <div class="chips" id="chips"></div>
+  <label>Or use your own photo</label>
+  <label class="btn2" for="file" style="text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)">Choose a photo from your phone</label>
+  <input type="file" id="file" accept="image/*" style="position:absolute;left:-9999px">
+  <p class="hint" id="fmsg"></p>
+  <label>Background blur</label><input type="range" id="blur" min="0" max="30" value="6">
+  <label>Photo position (left/right, up/down)</label><div class="row"><input type="range" id="px" min="0" max="100" value="50"><input type="range" id="py" min="0" max="100" value="50"></div>
+  <label>Darkness (for readability)</label><input type="range" id="dimr" min="0" max="80" value="15">
+</div>
+
+<button class="btn" id="view">Poster view (for screenshot)</button>
+<p class="hint">Tap Poster view, then take a screenshot of the phone screen and send it. Tap Exit to edit again.</p>
+</div>
+</div>
+
+<script>
+var W=1080,H=1350;
+function trees(c1,c2){var s='';for(var i=0;i<16;i++){var x=i*72+(i%2)*28-20,y=1010+(i%3)*50,h=300+(i%4)*40;s+='<polygon points="'+x+','+(y-h)+' '+(x-70)+','+y+' '+(x+70)+','+y+'" fill="'+(i%2?c1:c2)+'"/>';}return s+'<rect x="0" y="1010" width="1080" height="340" fill="'+c2+'"/>';}
+function rain(){var s='';for(var i=0;i<110;i++){var x=(i*97)%1160-40,y=(i*211)%1300,l=60+(i%5)*22;s+='<line x1="'+x+'" y1="'+y+'" x2="'+(x-14)+'" y2="'+(y+l)+'" stroke="#dfe9ef" stroke-opacity="'+(.18+(i%4)*.08)+'" stroke-width="2.5"/>';}return s;}
+function stars(){var s='';for(var i=0;i<60;i++)s+='<circle cx="'+((i*173)%1080)+'" cy="'+((i*97)%650)+'" r="'+(1+(i%3))+'" fill="#fff" opacity="'+(.3+(i%4)*.18)+'"/>';return s;}
+function svg(inner,g){var d='<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">';g.forEach(function(c,i){d+='<stop offset="'+c[0]+'" stop-color="'+c[1]+'"/>';});return '<svg viewBox="0 0 1080 1350" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">'+d+'</linearGradient><radialGradient id="s"><stop offset="0" stop-color="#fff6d8"/><stop offset="1" stop-color="#fff6d8" stop-opacity="0"/></radialGradient></defs><rect width="1080" height="1350" fill="url(#g)"/>'+inner+'</svg>';}
+var SCENES={
+'Sunrise':svg('<circle cx="540" cy="880" r="380" fill="url(#s)"/><circle cx="540" cy="880" r="95" fill="#fff3cf"/><path d="M0 980 Q200 900 420 960 T820 930 T1080 960 V1350 H0Z" fill="#7a4a3a" opacity=".75"/><path d="M0 1060 Q260 990 520 1050 T1080 1030 V1350 H0Z" fill="#3c2b2e"/>',[[0,'#25456b'],[.45,'#d98c5f'],[.7,'#ffd49a'],[1,'#ffe8c0']]),
+'Twilight':svg(stars()+'<circle cx="540" cy="960" r="300" fill="url(#s)" opacity=".5"/><path d="M0 1000 L180 860 L330 980 L520 820 L720 970 L900 880 L1080 990 V1350 H0Z" fill="#23193d"/><path d="M0 1120 Q300 1040 600 1110 T1080 1090 V1350 H0Z" fill="#120d24"/>',[[0,'#141a45'],[.5,'#6a4c93'],[.8,'#f09a7c'],[1,'#f6c9a0']]),
+'Misty mountains':svg('<path d="M0 760 L200 560 L380 720 L560 520 L760 740 L920 620 L1080 760 V1350H0Z" fill="#8fa5b0" opacity=".6"/><path d="M0 900 L240 700 L460 880 L700 680 L900 860 L1080 780 V1350H0Z" fill="#6f8a94" opacity=".75"/><rect y="820" width="1080" height="200" fill="#eef2f0" opacity=".45"/><path d="M0 1040 L220 900 L460 1030 L720 890 L1080 1050 V1350H0Z" fill="#46635f"/><rect y="980" width="1080" height="160" fill="#eef2f0" opacity=".3"/>',[[0,'#a9bcc6'],[.6,'#dfe8e8'],[1,'#f2f4f0']]),
+'Evergreen':svg('<circle cx="760" cy="520" r="300" fill="url(#s)" opacity=".5"/>'+trees('#1f4a3a','#16352b'),[[0,'#8db8a5'],[.55,'#e3d9a8'],[1,'#f1e8c3']]),
+'Snow peaks':svg('<path d="M0 960 L260 520 L420 760 L600 400 L820 780 L960 600 L1080 800 V1350H0Z" fill="#f4f8fb"/><path d="M600 400 L820 780 L700 800 L610 640Z M260 520 L420 760 L320 780 L270 650Z" fill="#b8cbdb" opacity=".8"/><path d="M0 1080 L300 880 L560 1060 L840 900 L1080 1060 V1350H0Z" fill="#dce7ef"/><rect y="1120" width="1080" height="230" fill="#fff"/>',[[0,'#4f86b8'],[.6,'#a9cce6'],[1,'#e6f1f8']]),
+'Rain':svg('<path d="M0 1010 Q270 940 540 1000 T1080 980 V1350H0Z" fill="#2c3f46" opacity=".85"/>'+rain(),[[0,'#3b4b55'],[.6,'#6d8590'],[1,'#9bb0b8']])
+};
+var PHOTOS=[];
+var cur=null,photo=null;
+var $=function(i){return document.getElementById(i)};
+function bg(){$('bg').innerHTML=photo?'<div style="background-image:url(\''+photo+'\');background-position:'+$('px').value+'% '+$('py').value+'%"></div>':SCENES[cur];$('bg').style.filter='blur('+$('blur').value+'px) saturate(1.2)';var d=$('dimr').value/100,k=function(m){return Math.min(1,d*m)};$('dim').style.background='linear-gradient(180deg,rgba(0,0,0,'+k(.4)+') 0%,rgba(0,0,0,'+k(.9)+') 55%,rgba(0,0,0,'+k(1.3)+') 100%)';}
+function render(){
+ $('oTag').textContent=$('tag').value;
+ var v=$('verse').value,r=$('ref').value;
+ $('oVerse').textContent=v;$('oVerse').style.fontSize=(v.length>150?50:v.length>95?58:70)+'px';
+ $('oRef').textContent=r;
+ var lines=$('dec').value.split('\n').filter(function(x){return x.trim()}),h='';
+ lines.forEach(function(l,i){h+='<p><b>'+(i+1)+'</b></p>';});
+ $('oDec').innerHTML='';
+ lines.forEach(function(l,i){var p=document.createElement('p'),b=document.createElement('b');b.textContent=(i+1);p.appendChild(b);p.appendChild(document.createTextNode(l));$('oDec').appendChild(p);});
+ $('oDec').style.gap=(lines.length>5?16:26)+'px';
+ $('oEnd').textContent=$('end').value;
+ bg();
+}
+function fit(){var h=$('holder'),s=h.clientWidth/W;$('poster').style.transform='scale('+s+')';h.style.height=(H*s)+'px';}
+var ch=$('chips'),tb=$('thumbs');
+function clrT(){[].forEach.call(tb.children,function(x){x.classList.remove('on')})}
+function addThumbs(list){PHOTOS=list;tb.innerHTML='';list.forEach(function(ph,i){var d=document.createElement('img');d.className='th';d.loading='lazy';d.alt=ph.n;d.src=ph.f;d.onclick=function(){photo=ph.f;clrT();[].forEach.call(ch.children,function(c){c.classList.remove('on')});d.classList.add('on');bg();};tb.appendChild(d);});if(list.length&&!photo){photo=list[0].f;tb.children[0].classList.add('on');bg();}}
+function mk(p){var n=p.split('/').pop();return {n:n.replace(/\.[^.]+$/,'').replace(/[-_]/g,' '),f:p.split('/').map(encodeURIComponent).join('/')}}
+function fromManifest(){fetch('photos.json').then(function(r){return r.json()}).then(function(a){addThumbs(a.map(function(f){return mk('photos/'+f)}))}).catch(function(){tb.textContent='No photos found. Upload photos to the repository.'})}
+(function(){var m=location.hostname.match(/^(.+)\.github\.io$/),seg=location.pathname.split('/')[1];
+function list(path,prefix){return fetch('https://api.github.com/repos/'+m[1]+'/'+seg+'/contents/'+path).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(a){return a.filter(function(x){return /\.(jpe?g|png|webp)$/i.test(x.name)}).map(function(x){return mk(prefix+x.name)})}).catch(function(){return []})}
+if(m&&seg){Promise.all([list('',''),list('photos','photos/')]).then(function(r){var l=r[0].concat(r[1]);if(!l.length)throw 0;addThumbs(l)}).catch(fromManifest)}else fromManifest()})();
+Object.keys(SCENES).forEach(function(n){var b=document.createElement('button');b.className='chip';b.textContent=n;b.onclick=function(){cur=n;photo=null;clrT();[].forEach.call(ch.children,function(c){c.classList.toggle('on',c===b)});bg();};ch.appendChild(b);});
+$('file').onchange=function(e){var f=e.target.files[0];if(!f)return;$('fmsg').textContent='Loading photo…';var fr=new FileReader();fr.onerror=function(){$('fmsg').textContent='Could not read that photo. Try another one.'};fr.onload=function(){var im=new Image();im.onerror=function(){$('fmsg').textContent='Could not open that photo. Try a JPG or PNG.'};im.onload=function(){var m=1400,s=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext('2d').drawImage(im,0,0,c.width,c.height);photo=c.toDataURL('image/jpeg',.88);[].forEach.call(ch.children,function(x){x.classList.remove('on')});clrT();$('fmsg').textContent='Photo added.';bg();};im.src=fr.result;};fr.readAsDataURL(f);};
+['tag','verse','ref','dec','end','blur','dimr','px','py'].forEach(function(i){$(i).addEventListener('input',render)});
+$('view').onclick=function(){document.body.classList.add('view');window.scrollTo(0,0);fit();};
+$('exit').onclick=function(){document.body.classList.remove('view');fit();};
+window.addEventListener('resize',fit);
+render();fit();
+</script>
+</body>
+</html>
