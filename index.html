@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Weekly Refresh Poster Maker</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Oswald:wght@400;700&family=Inter:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Oswald:wght@400;700&family=Barlow+Condensed:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=Inter:wght@400;600;700&display=swap">
 <style>
 :root{--bg:#f4f4f2;--card:#fff;--ink:#1b1b1b;--mute:#666;--line:#d9d9d4;--acc:#b9852f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121416;--card:#1c1f22;--ink:#eee;--mute:#9aa;--line:#33383c}}
@@ -31,16 +31,16 @@ input[type=range]{width:100%}
 #bg,#dim{position:absolute;inset:-60px}
 #bg svg,#bg div{width:100%;height:100%;display:block}
 #bg div{background-size:cover;background-position:center}
-#poster .in{position:absolute;inset:0;padding:110px 100px 90px;display:flex;flex-direction:column}
+#poster .in{position:absolute;inset:0;padding:80px 80px 70px;display:flex;flex-direction:column}
 .tag{font:600 26px Inter,sans-serif;letter-spacing:.38em;text-transform:uppercase;opacity:.9}
-.bar{width:90px;height:3px;background:#e9c27a;margin:26px 0 56px}
-.ref{font:600 30px Inter,sans-serif;opacity:.85;margin-bottom:18px}
-.verse{font:var(--fw,700) 70px/1.2 var(--ff);text-shadow:0 2px 24px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.35)}
-.dec{margin-top:auto;display:flex;flex-direction:column;gap:26px}
-.dec p{margin:0;font:var(--fw,700) var(--df,33px)/1.35 var(--ff);padding-left:70px;position:relative;text-shadow:0 1px 14px rgba(0,0,0,.55)}
-.dec p b{position:absolute;left:0;top:0;font:600 var(--bf,26px) Inter,sans-serif;line-height:calc(var(--df,33px)*1.35);color:#e9c27a}
-.end{margin-top:48px;font:italic var(--fw,700) 38px var(--ff);color:#f1d9a3}
-body.daily .dec{display:none}body.daily .verse{margin-top:auto;order:1}body.daily .ref{order:2;margin:40px 0 0}body.daily .end{order:3;margin-top:auto}body.daily .bar{margin-bottom:0}
+.bar{width:90px;height:3px;background:#e9c27a;margin:20px 0 34px}
+.ref{font:600 30px Inter,sans-serif;opacity:.85;margin-bottom:12px}
+.verse{-webkit-text-stroke:var(--sw,0px) rgba(0,0,0,.8);paint-order:stroke fill;font:var(--fw,700) 70px/1.2 var(--ff);text-shadow:0 2px 24px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.35)}
+.dec{margin-top:auto;display:flex;flex-direction:column;gap:22px}
+.dec p{margin:0;-webkit-text-stroke:var(--sw,0px) rgba(0,0,0,.8);paint-order:stroke fill;font:var(--fw,700) var(--df,40px)/1.3 var(--ff);padding-left:58px;position:relative;text-shadow:0 1px 14px rgba(0,0,0,.55)}
+.dec p b{position:absolute;left:0;top:0;font:600 var(--bf,26px) Inter,sans-serif;line-height:calc(var(--df,40px)*1.3);color:#e9c27a}
+.end{margin-top:36px;-webkit-text-stroke:var(--sw,0px) rgba(0,0,0,.8);paint-order:stroke fill;font:italic var(--fw,700) 38px var(--ff);color:#f1d9a3}
+.vs{display:none}body.daily .dec{display:none}body.daily .verse{margin-top:auto;order:1}body.daily .vs{display:block;order:2;margin-top:44px;-webkit-text-stroke:var(--sw,0px) rgba(0,0,0,.8);paint-order:stroke fill;font:italic var(--fw,700) var(--sf,38px)/1.3 var(--ff);text-shadow:0 1px 14px rgba(0,0,0,.55)}body.daily .ref{order:3;margin:22px 0 0;color:#e9c27a;opacity:1}body.daily .end{order:4;margin-top:auto}body.daily .bar{margin-bottom:0}
 select{width:100%;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px}
 .tile{display:block;width:100%;text-align:left;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:22px 20px;margin-bottom:14px;font:inherit;cursor:pointer}.tile b{display:block;font:600 22px 'Source Serif 4',Georgia,serif;margin-bottom:6px}.tile span{color:var(--mute);font-size:14px}
 body.view .ctl{display:none}
@@ -55,7 +55,7 @@ body.view #exit{display:block}
 <div id="launch" class="app">
 <h1 style="font-size:28px;margin-top:36px">Poster Maker</h1>
 <p class="hint" style="font-size:15px;margin:0 0 22px">What would you like to make today?</p>
-<button class="tile" data-go="daily"><b>Daily Dose</b><span>A short word of encouragement to lift spirits.</span></button>
+<button class="tile" data-go="daily"><b>Word of the Day</b><span>A short quote paired with a Bible verse.</span></button>
 <button class="tile" data-go="weekly"><b>Verses &amp; Decrees</b><span>Verse of the day, week or month, with declarations.</span></button>
 </div>
 <div class="app" id="main" style="display:none">
@@ -67,6 +67,7 @@ body.view #exit{display:block}
     <div class="tag" id="oTag"></div><div class="bar"></div>
     <div class="ref" id="oRef"></div>
     <div class="verse" id="oVerse"></div>
+    <div class="vs" id="oVs"></div>
     <div class="dec" id="oDec"></div>
     <div class="end" id="oEnd"></div>
   </div>
@@ -75,21 +76,24 @@ body.view #exit{display:block}
 <div class="ctl" style="margin-top:14px">
 <div class="card">
   <div class="chips" id="vtypes"><button class="chip on" data-t="Weekly Refresh">Weekly Refresh</button><button class="chip" data-t="Verse of the Day">Verse of the Day</button><button class="chip" data-t="Verse of the Month">Verse of the Month</button></div>
-  <div class="chips" id="modes" style="display:none"><button class="chip on" data-m="weekly">Weekly Refresh</button><button class="chip" data-m="daily">Daily Dose</button></div>
+  <div class="chips" id="modes" style="display:none"><button class="chip on" data-m="weekly">Weekly Refresh</button><button class="chip" data-m="daily">Word of the Day</button></div>
   <label>Title</label><input type="text" id="tag" value="Weekly Refresh">
   <label id="lbV">Verse</label><textarea id="verse">“The LORD shall fight for you, and ye shall hold your peace.”</textarea>
+  <div id="grpVs" style="display:none"><label>Bible verse (optional)</label><textarea id="vs" rows="3"></textarea></div>
   <label id="lbR">Reference</label><input type="text" id="ref" value="Exodus 14:14 KJV">
-  <button class="chip" id="idea" style="display:none;margin-top:8px">New idea</button>
+  <button class="chip" id="idea" style="display:none;margin-top:8px">New quote</button>
   <div id="grpDec"><label>Decrees (one per line)</label>
   <textarea id="dec" rows="6">The Lord shall arise and fight our battles. Every power contending with our destiny shall be silenced.
 Every trap set against us and our families shall be destroyed, and every closed door shall be opened.
 We shall experience supernatural deliverance, uncommon favour, and victory on every side.
 Before this year ends, we shall have undeniable testimonies of God’s goodness.</textarea></div>
   <label>Closing line</label><input type="text" id="end" value="In Jesus’ mighty name. Amen!">
+  <label>Poster shape</label><div class="chips" id="shapes"><button class="chip on" data-h="1350">Portrait 4:5</button><button class="chip" data-h="1920">Full screen 9:16</button></div>
   <label>Font style</label><select id="font"></select>
   <label>Boldness</label><div class="chips" id="wts"><button class="chip" data-w="400">Regular</button><button class="chip on" data-w="700">Bold</button><button class="chip" data-w="900">Extra bold</button></div>
+  <label style="text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink);display:flex;gap:8px;align-items:center;margin:10px 0 6px"><input type="checkbox" id="outl" checked> Outline (easier to read)</label>
   <label>Text size</label>
-  <label style="text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink);display:flex;gap:8px;align-items:center;margin:0 0 6px"><input type="checkbox" id="tsAuto" checked> Auto (biggest that fits)</label><input type="range" id="ts" min="0.6" max="1.6" step="0.05" value="1.2">
+  <label style="text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink);display:flex;gap:8px;align-items:center;margin:0 0 6px"><input type="checkbox" id="tsAuto" checked> Auto (biggest that fits)</label><input type="range" id="ts" min="0.6" max="2.2" step="0.05" value="1.2">
   <p class="hint" id="tsHint"></p>
 </div>
 
@@ -133,12 +137,12 @@ var PHOTOS=[];
 var cur=null,photo=null;
 var $=function(i){return document.getElementById(i)};
 function bg(){$('bg').innerHTML=photo?'<div style="background-image:url(\''+photo+'\');background-position:'+$('px').value+'% '+$('py').value+'%"></div>':SCENES[cur];$('bg').style.filter='blur('+$('blur').value+'px) saturate(1.2)';var d=$('dimr').value/100,k=function(m){return Math.min(1,d*m)};$('dim').style.background='linear-gradient(180deg,rgba(0,0,0,'+k(.7)+') 0%,rgba(0,0,0,'+k(.95)+') 55%,rgba(0,0,0,'+k(1.2)+') 100%)';autoDark();}
-function szs(ts){var n=$('verse').value.length,vf,vb;
- if(mode==='daily'){vb=n<=50?120:n<=100?104:n<=160?88:n<=240?74:62;vf=Math.min(vb*ts,150)}else{vb=n>150?50:n>95?58:70;vf=Math.min(vb*ts,96)}
- return {vf:vf,rf:(mode==='daily'?34:30)*Math.min(ts,1.2),df:33*ts,bf:33*ts*.78,ef:38*Math.min(ts,1.3)}}
-function applyTs(ts){var z=szs(ts),P=$('poster');$('oVerse').style.fontSize=z.vf+'px';$('oRef').style.fontSize=z.rf+'px';$('oEnd').style.fontSize=z.ef+'px';P.style.setProperty('--df',z.df+'px');P.style.setProperty('--bf',z.bf+'px')}
-function overflow(){var en=$('oEnd'),ve=$('oVerse');if(en.offsetTop+en.offsetHeight>H-90+1)return true;if(mode==='weekly'&&$('oDec').offsetTop-(ve.offsetTop+ve.offsetHeight)<40)return true;return false}
-function layoutFit(){var req=$('tsAuto').checked?1.6:+$('ts').value,t=req;for(;t>=.6;t=Math.round((t-.05)*100)/100){applyTs(t);if(!overflow())break}
+function szs(ts){var n=$('verse').value.length,vf,vb,hv=$('vs').value.trim()?1:0;
+ if(mode==='daily'){vb=n<=60?(hv?96:120):n<=110?(hv?84:104):n<=170?(hv?72:88):n<=240?(hv?62:74):(hv?54:62);vf=Math.min(vb*ts,150)}else{vb=n>150?46:n>95?54:64;vf=Math.min(vb*ts,90)}
+ return {vf:vf,sf:36*Math.min(ts,1.35),rf:(mode==='daily'?32:30)*Math.min(ts,1.25),df:40*ts,bf:40*ts*.78,ef:38*Math.min(ts,1.3)}}
+function applyTs(ts){var z=szs(ts),P=$('poster');$('oVerse').style.fontSize=z.vf+'px';$('oRef').style.fontSize=z.rf+'px';$('oEnd').style.fontSize=z.ef+'px';P.style.setProperty('--df',z.df+'px');P.style.setProperty('--bf',z.bf+'px');P.style.setProperty('--sf',z.sf+'px')}
+function overflow(){var en=$('oEnd'),ve=$('oVerse');if(en.offsetTop+en.offsetHeight>H-70+1)return true;if(mode==='weekly'&&$('oDec').offsetTop-(ve.offsetTop+ve.offsetHeight)<40)return true;return false}
+function layoutFit(){var req=$('tsAuto').checked?2.2:+$('ts').value,t=req;for(;t>=.6;t=Math.round((t-.05)*100)/100){applyTs(t);if(!overflow())break}
  TS=Math.max(.6,t);applyTs(TS);$('tsHint').textContent=$('tsAuto').checked?'Using '+Math.round(TS*100)+'% size.':(TS<req?'Reduced to '+Math.round(TS*100)+'% so everything fits.':'')}
 function render(){
  document.body.classList.toggle('daily',mode==='daily');
@@ -147,8 +151,9 @@ function render(){
  $('oVerse').textContent=$('verse').value;
  var r=$('ref').value;$('oRef').textContent=r;$('oRef').style.display=(mode==='daily'&&!r.trim())?'none':'';
  $('oDec').innerHTML='';
- $('dec').value.split('\n').filter(function(x){return x.trim()}).forEach(function(l,i,a){var p=document.createElement('p'),b=document.createElement('b');b.textContent=(i+1);p.appendChild(b);p.appendChild(document.createTextNode(l.trim()));$('oDec').appendChild(p);$('oDec').style.gap=(a.length>5?16:26)+'px'});
+ $('dec').value.split('\n').filter(function(x){return x.trim()}).forEach(function(l,i,a){var p=document.createElement('p'),b=document.createElement('b');b.textContent=(i+1);p.appendChild(b);p.appendChild(document.createTextNode(l.trim()));$('oDec').appendChild(p);$('oDec').style.gap=(a.length>5?14:22)+'px'});
  $('oEnd').textContent=$('end').value;
+ $('oVs').textContent=$('vs').value;$('oVs').style.display=(mode==='daily'&&$('vs').value.trim())?'':'none';$('grpVs').style.display=mode==='daily'?'':'none';
  applyFont();
  layoutFit();
  bg();
@@ -190,31 +195,35 @@ async function makePoster(S){
  g.addColorStop(0,'rgba(0,0,0,'+k(.7)+')');g.addColorStop(.55,'rgba(0,0,0,'+k(.95)+')');g.addColorStop(1,'rgba(0,0,0,'+k(1.2)+')');
  c.fillStyle=g;c.fillRect(0,0,w,h);
  try{await Promise.all([FW+' 70px '+FF,'italic '+FW+' 38px '+FF,'600 26px Inter'].map(function(x){return document.fonts.load(x)}))}catch(e){}
- c.save();c.scale(S,S);c.textBaseline='middle';
+ c.save();c.scale(S,S);c.textBaseline='middle';c.lineJoin='round';
  function wrap(txt,font,maxw){c.font=font;var ws=txt.split(/\s+/).filter(Boolean),ls=[],cu='';ws.forEach(function(wd){var tt=cu?cu+' '+wd:wd;if(c.measureText(tt).width>maxw&&cu){ls.push(cu);cu=wd}else cu=tt});if(cu)ls.push(cu);return ls}
  function shadow(b,oy,a){c.shadowColor='rgba(0,0,0,'+a+')';c.shadowBlur=b*S;c.shadowOffsetY=oy*S}
  function noShadow(){c.shadowColor='transparent';c.shadowBlur=0;c.shadowOffsetY=0}
- var z=szs(TS),daily=mode==='daily',L=100,mw=880,y=110;
+ var OUT=$('outl').checked;
+ function put(t,x,yy){if(OUT){c.strokeStyle='rgba(0,0,0,.8)';c.lineWidth=6;c.strokeText(t,x,yy)}c.fillText(t,x,yy)}
+ var z=szs(TS),daily=mode==='daily',L=80,mw=920,y=80;
  c.font='600 26px '+SANS;c.fillStyle='rgba(255,255,255,.9)';var x=L;
  $('tag').value.toUpperCase().split('').forEach(function(ch){c.fillText(ch,x,y+16);x+=c.measureText(ch).width+9.88});
- y+=31+26;c.fillStyle='#e9c27a';c.fillRect(L,y,90,3);y+=3+(daily?0:56);
- var endTxt=$('end').value.trim(),eh=endTxt?z.ef*1.29:0,et=H-90-eh,rt=$('ref').value.trim();
+ y+=31+20;c.fillStyle='#e9c27a';c.fillRect(L,y,90,3);y+=3+(daily?0:34);
+ var endTxt=$('end').value.trim(),eh=endTxt?z.ef*1.29:0,et=H-70-eh,rt=$('ref').value.trim();
  var vf=FW+' '+z.vf+'px '+SERIF,vl=wrap($('verse').value,vf,mw),vh=vl.length*z.vf*1.2;
- function drawVerse(vy){c.font=vf;c.fillStyle='#fff';shadow(24,2,.5);vl.forEach(function(ln,i){c.fillText(ln,L,vy+i*z.vf*1.2+z.vf*.6)});noShadow()}
+ function drawVerse(vy){c.font=vf;c.fillStyle='#fff';shadow(24,2,.5);vl.forEach(function(ln,i){put(ln,L,vy+i*z.vf*1.2+z.vf*.6)});noShadow()}
  if(!daily){
-  var rh=rt?z.rf*1.2:0;if(rt){c.font='600 '+z.rf+'px '+SANS;c.fillStyle='rgba(255,255,255,.85)';c.fillText(rt,L,y+rh/2)}y+=rh+18;
+  var rh=rt?z.rf*1.2:0;if(rt){c.font='600 '+z.rf+'px '+SANS;c.fillStyle='rgba(255,255,255,.85)';c.fillText(rt,L,y+rh/2)}y+=rh+12;
   drawVerse(y);
-  var dh=z.df*1.35,df=FW+' '+z.df+'px '+SERIF,dl=$('dec').value.split('\n').map(function(s){return s.trim()}).filter(Boolean),gp=dl.length>5?16:26;
-  var bs=dl.map(function(l){return wrap(l,df,mw-70)});
-  var tot=bs.reduce(function(s,b){return s+b.length*dh},0)+gp*Math.max(0,bs.length-1),top=et-48-tot;
+  var dh=z.df*1.3,df=FW+' '+z.df+'px '+SERIF,dl=$('dec').value.split('\n').map(function(s){return s.trim()}).filter(Boolean),gp=dl.length>5?14:22;
+  var bs=dl.map(function(l){return wrap(l,df,mw-58)});
+  var tot=bs.reduce(function(s,b){return s+b.length*dh},0)+gp*Math.max(0,bs.length-1),top=et-36-tot;
   bs.forEach(function(b,i){c.font='600 '+z.bf+'px '+SANS;c.fillStyle='#e9c27a';c.fillText(String(i+1),L,top+dh/2);
-   c.fillStyle='#fff';shadow(14,1,.55);b.forEach(function(ln,j){c.font=df;c.fillText(ln,L+70,top+j*dh+dh/2)});noShadow();top+=b.length*dh+gp});
+   c.fillStyle='#fff';shadow(14,1,.55);b.forEach(function(ln,j){c.font=df;put(ln,L+58,top+j*dh+dh/2)});noShadow();top+=b.length*dh+gp});
  }else{
-  var rb=rt?z.rf*1.2+40:0,free=Math.max(0,et-y-vh-rb),vy=y+free/2;
+  var sv=$('vs').value.trim(),sfn='italic '+FW+' '+z.sf+'px '+SERIF,sl=sv?wrap(sv,sfn,mw):[],sh=sl.length*z.sf*1.3,sb=sv?44+sh:0,rb=rt?22+z.rf*1.2:0;
+  var free=Math.max(0,et-y-vh-sb-rb),vy=y+free/2;
   drawVerse(vy);
-  if(rt){c.font='600 '+z.rf+'px '+SANS;c.fillStyle='rgba(255,255,255,.85)';c.fillText(rt,L,vy+vh+40+z.rf*.6)}
+  if(sv){c.font=sfn;c.fillStyle='#fff';shadow(14,1,.55);sl.forEach(function(ln,i){put(ln,L,vy+vh+44+i*z.sf*1.3+z.sf*.65)});noShadow()}
+  if(rt){c.font='600 '+z.rf+'px '+SANS;c.fillStyle='#e9c27a';c.fillText(rt,L,vy+vh+sb+22+z.rf*.6)}
  }
- if(endTxt){c.font='italic '+FW+' '+z.ef+'px '+SERIF;c.fillStyle='#f1d9a3';c.fillText(endTxt,L,et+eh/2)}
+ if(endTxt){c.font='italic '+FW+' '+z.ef+'px '+SERIF;c.fillStyle='#f1d9a3';shadow(10,1,.5);put(endTxt,L,et+eh/2);noShadow()}
  c.restore();
  if(c.getImageData(5,5,1,1).data[3]===0)throw new Error('blank');
  return cv;
@@ -225,16 +234,16 @@ async function runDl(list,btn){var b=btn,t=b.textContent;b.textContent='Making y
  if(!cv)return fail();
  cv.toBlob(function(bl){if(!bl)return fail();var u=URL.createObjectURL(bl),a=document.createElement('a');a.href=u;a.download='weekly-refresh.jpg';document.body.appendChild(a);a.click();a.remove();
   $('dlout').innerHTML='<p class="hint">Saved? If not, press and hold the image below and choose Save image.</p><img src="'+u+'" style="width:100%;border-radius:10px;margin-top:8px">';b.textContent=t;b.disabled=false},'image/jpeg',.95)};
-var BANK=["Your story is not finished. What looks like an ending may be God turning the page.","Do not despise small beginnings. Every harvest you admire started as a seed in the dark.","You are not behind. You are being prepared for a bigger assignment.","Keep going. The God who started this good work in you knows how to finish it.","Rest is not weakness. Even the strongest builders need a quiet night before a new day.","Today\u2019s small step of faith is tomorrow\u2019s testimony.","What you are going through is shaping you. It is not the end of you.","Be patient with yourself. Growth is quiet, and it is still growth.","Speak life over your day before the day speaks over you.","Delay is not denial. God\u2019s timing is never late.","You have survived every hard day so far. That is a record worth trusting.","Let your faith be bigger than your fear, and your gratitude louder than your worry.","A grateful heart finds a reason to rise, even on a heavy morning.","Do the next right thing. God will handle the rest.","You were made for more than just getting by. Rise and walk in it.","Peace is not the absence of storms. It is knowing who is in the boat.","Someone is praying for you right now. You are carried more than you know.","Start where you are. Use what you have. Trust Him with the rest.","Your breakthrough may be one faithful day away. Do not quit now.","Hard seasons do not cancel a good God. Hold on.","Choose hope today. It costs nothing and it changes everything.","You do not have to see the whole road. Just take the step in front of you.","Be kind to someone today. You may be the answer to a quiet prayer.","New day, new mercy. Receive it and walk in it."];
-var mode='weekly',TS=1,bi=0,store={weekly:null,daily:{tag:'Daily Dose',verse:BANK[0],ref:'',dec:'',end:''}};
-function snap(){return {tag:$('tag').value,verse:$('verse').value,ref:$('ref').value,dec:$('dec').value,end:$('end').value}}
-function loadF(o){$('tag').value=o.tag;$('verse').value=o.verse;$('ref').value=o.ref;$('dec').value=o.dec;$('end').value=o.end}
+var BANK=[["Keep going. Progress is still progress, however small.", "I can do all things through Christ which strengtheneth me.", "Philippians 4:13 KJV"], ["Courage is not the absence of fear. It is taking the next step anyway.", "Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.", "Joshua 1:9 KJV"], ["What you do today with faith, you will thank yourself for tomorrow.", "And let us not be weary in well doing: for in due season we shall reap, if we faint not.", "Galatians 6:9 KJV"], ["Great things take time. Stay patient and stay consistent.", "He hath made every thing beautiful in his time.", "Ecclesiastes 3:11 KJV"], ["A calm mind makes better decisions than a worried one.", "Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.", "Isaiah 26:3 KJV"], ["You are stronger than your hardest day.", "Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee.", "Isaiah 41:10 KJV"], ["Your effort matters, even when nobody sees it.", "And whatsoever ye do, do it heartily, as to the Lord, and not unto men.", "Colossians 3:23 KJV"], ["Hard seasons pass. Keep your eyes on what is ahead.", "Weeping may endure for a night, but joy cometh in the morning.", "Psalm 30:5 KJV"], ["Start before you feel ready. Confidence grows as you move.", "Commit thy works unto the LORD, and thy thoughts shall be established.", "Proverbs 16:3 KJV"], ["Do not let yesterday decide who you will be today.", "Remember ye not the former things, neither consider the things of old. Behold, I will do a new thing.", "Isaiah 43:18-19 KJV"], ["Be the kind of person who lifts others up.", "Wherefore comfort yourselves together, and edify one another, even as also ye do.", "1 Thessalonians 5:11 KJV"], ["Small steps every day lead to big change.", "For who hath despised the day of small things?", "Zechariah 4:10 KJV"], ["Choose gratitude. It changes how the whole day feels.", "This is the day which the LORD hath made; we will rejoice and be glad in it.", "Psalm 118:24 KJV"], ["You are never too tired to start again.", "They are new every morning: great is thy faithfulness.", "Lamentations 3:23 KJV"], ["Wisdom begins with listening.", "Let every man be swift to hear, slow to speak, slow to wrath.", "James 1:19 KJV"], ["Plans made with God are plans worth making.", "For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end.", "Jeremiah 29:11 KJV"], ["Do not give up on the good you are building.", "Be ye strong therefore, and let not your hands be weak: for your work shall be rewarded.", "2 Chronicles 15:7 KJV"], ["Strength grows in quiet places.", "In quietness and in confidence shall be your strength.", "Isaiah 30:15 KJV"], ["Let your words build people up.", "Pleasant words are as an honeycomb, sweet to the soul, and health to the bones.", "Proverbs 16:24 KJV"], ["Trust the process. God is working even when you cannot see it.", "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.", "Proverbs 3:5-6 KJV"], ["Hope is a decision you make every morning.", "Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope.", "Romans 15:13 KJV"], ["Finish what you started.", "He which hath begun a good work in you will perform it until the day of Jesus Christ.", "Philippians 1:6 KJV"], ["You are not alone in this.", "Be strong and of a good courage, fear not, nor be afraid of them: for the LORD thy God, he it is that doth go with thee; he will not fail thee, nor forsake thee.", "Deuteronomy 31:6 KJV"], ["Today is a fresh start.", "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.", "2 Corinthians 5:17 KJV"]];
+var mode='weekly',TS=1,bi=0,store={weekly:null,daily:{tag:'Word of the Day',verse:BANK[0][0],vs:BANK[0][1],ref:BANK[0][2],dec:'',end:''}};
+function snap(){return {tag:$('tag').value,verse:$('verse').value,vs:$('vs').value,ref:$('ref').value,dec:$('dec').value,end:$('end').value}}
+function loadF(o){$('tag').value=o.tag;$('verse').value=o.verse;$('vs').value=o.vs||'';$('ref').value=o.ref;$('dec').value=o.dec;$('end').value=o.end}
 function setMode(m){if(m===mode)return;store[mode]=snap();mode=m;loadF(store[m]);
  [].forEach.call($('modes').children,function(b){b.classList.toggle('on',b.dataset.m===m)});
- $('lbV').textContent=m==='daily'?'Quote':'Verse';$('lbR').textContent=m==='daily'?'Author or reference (optional)':'Reference';
+ $('lbV').textContent=m==='daily'?'Quote':'Verse';$('lbR').textContent=m==='daily'?'Bible reference':'Reference';
  $('idea').style.display=m==='daily'?'':'none';render()}
 [].forEach.call($('modes').children,function(b){b.onclick=function(){setMode(b.dataset.m)}});
-$('idea').onclick=function(){var n;do{n=Math.floor(Math.random()*BANK.length)}while(n===bi&&BANK.length>1);bi=n;$('verse').value=BANK[n];render()};
+$('idea').onclick=function(){var n;do{n=Math.floor(Math.random()*BANK.length)}while(n===bi&&BANK.length>1);bi=n;$('verse').value=BANK[n][0];$('vs').value=BANK[n][1];$('ref').value=BANK[n][2];render()};
 $('tsAuto').addEventListener('change',render);
 $('ts').addEventListener('input',function(e){if(e.isTrusted)$('tsAuto').checked=false;render()});
 var autoD=true,autoKey='';
@@ -243,7 +252,7 @@ function autoDark(){
  var key=(photo?photo.slice(0,80)+photo.length:cur)+'|'+$('px').value+'|'+$('py').value;
  if(key===autoKey)return;autoKey=key;
  loadImg(bgSrc()).then(function(img){
-  var cw=54,ch=68,cv=document.createElement('canvas');cv.width=cw;cv.height=ch;var x=cv.getContext('2d');
+  var cw=54,ch=Math.round(54*H/W),cv=document.createElement('canvas');cv.width=cw;cv.height=ch;var x=cv.getContext('2d');
   var iw=img.naturalWidth||img.width,ih=img.naturalHeight||img.height,s=Math.max(cw/iw,ch/ih),dw=iw*s,dh=ih*s;
   x.drawImage(img,(cw-dw)*$('px').value/100,(ch-dh)*$('py').value/100,dw,dh);
   var d=x.getImageData(4,5,cw-8,ch-10).data,ls=[],sum=0;
@@ -260,11 +269,11 @@ $('auto').addEventListener('change',function(){autoD=this.checked;autoKey='';if(
 var LOW=(navigator.deviceMemory&&navigator.deviceMemory<=2)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4);
 $('dl').onclick=function(){runDl(LOW?[1]:[1.5,1],$('dl'))};
 $('dlLite').onclick=function(){runDl([1],$('dlLite'))};
-var FONTS={'Source Serif 4':'"Source Serif 4",Georgia,serif','Merriweather':'Merriweather,Georgia,serif','Lora':'Lora,Georgia,serif','Playfair Display':'"Playfair Display",Georgia,serif','Montserrat':'Montserrat,Arial,sans-serif','Oswald':'Oswald,Impact,sans-serif'};
+var FONTS={'Source Serif 4':'"Source Serif 4",Georgia,serif','Merriweather':'Merriweather,Georgia,serif','Lora':'Lora,Georgia,serif','Playfair Display':'"Playfair Display",Georgia,serif','Montserrat':'Montserrat,Arial,sans-serif','Oswald':'Oswald,Impact,sans-serif','Barlow Condensed':'"Barlow Condensed",Arial,sans-serif'};
 var FF=FONTS['Source Serif 4'],FW='700';
 SERIF=FF;
 Object.keys(FONTS).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=k;$('font').appendChild(o)});
-function applyFont(){var P=$('poster');P.style.setProperty('--ff',FF);P.style.setProperty('--fw',FW)}
+function applyFont(){var P=$('poster');P.style.setProperty('--ff',FF);P.style.setProperty('--fw',FW);P.style.setProperty('--sw',$('outl').checked?'6px':'0px')}
 function fontChanged(){SERIF=FF;render();try{document.fonts.load(FW+' 40px '+FF).then(render)}catch(e){}}
 $('font').onchange=function(){FF=FONTS[this.value];fontChanged()};
 [].forEach.call($('wts').children,function(b){b.onclick=function(){FW=b.dataset.w;[].forEach.call($('wts').children,function(x){x.classList.toggle('on',x===b)});fontChanged()}});
@@ -273,6 +282,8 @@ function enter(m){$('launch').style.display='none';$('main').style.display='';
  if(mode!==m)setMode(m);$('vtypes').style.display=m==='weekly'?'':'none';fit();render();window.scrollTo(0,0)}
 [].forEach.call(document.querySelectorAll('.tile'),function(t){t.onclick=function(){enter(t.dataset.go)}});
 $('back').onclick=function(){$('main').style.display='none';$('launch').style.display='';window.scrollTo(0,0)};
+[].forEach.call($('shapes').children,function(b){b.onclick=function(){H=+b.dataset.h;$('poster').style.height=H+'px';[].forEach.call($('shapes').children,function(x){x.classList.toggle('on',x===b)});autoKey='';fit();render()}});
+$('outl').addEventListener('change',render);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){render()});
 render();fit();
 </script>
