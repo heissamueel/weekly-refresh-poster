@@ -6,13 +6,13 @@
 <title>Weekly Refresh Poster Maker</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Oswald:wght@400;700&family=Barlow+Condensed:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=Inter:wght@400;600;700&display=swap">
 <style>
-:root{--bg:#f4f4f2;--card:#fff;--ink:#1b1b1b;--mute:#666;--line:#d9d9d4;--acc:#b9852f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121416;--card:#1c1f22;--ink:#eee;--mute:#9aa;--line:#33383c}}
+:root{--bg:#f7f2e8;--card:#fffdf9;--ink:#1d1b18;--mute:#6b665c;--line:#e6dfce;--glow:#fbe6bd;--acc:#b9852f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--bg:#0f1318;--card:#1a2028;--ink:#eef0f2;--mute:#9aa6b2;--line:#2c3540;--glow:#2b2314}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 Inter,system-ui,sans-serif}
+body{margin:0;min-height:100vh;background:radial-gradient(900px 420px at 50% -80px,var(--glow),transparent 70%) no-repeat,var(--bg);color:var(--ink);font:15px/1.4 Inter,system-ui,sans-serif}
 .app{max-width:560px;margin:0 auto;padding:16px}
 h1{font:600 20px 'Source Serif 4',Georgia,serif;margin:4px 0 14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px;box-shadow:0 10px 26px -16px rgba(0,0,0,.28)}
 label{display:block;font-size:12px;color:var(--mute);margin:10px 0 4px;text-transform:uppercase;letter-spacing:.06em}
 label:first-child{margin-top:0}
 input[type=text],textarea{width:100%;font:inherit;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:10px;padding:10px}
@@ -43,6 +43,13 @@ input[type=range]{width:100%}
 .vs{display:none}body.daily .dec{display:none}body.daily .verse{margin-top:auto;order:1}body.daily .vs{display:block;order:2;margin-top:44px;-webkit-text-stroke:var(--sw,0px) rgba(0,0,0,.8);paint-order:stroke fill;font:italic var(--fw,700) var(--sf,38px)/1.3 var(--ff);text-shadow:0 1px 14px rgba(0,0,0,.55)}body.daily .ref{order:3;margin:22px 0 0;color:#e9c27a;opacity:1}body.daily .end{order:4;margin-top:auto}body.daily .bar{margin-bottom:0}
 select{width:100%;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px}
 .tile{display:block;width:100%;text-align:left;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:22px 20px;margin-bottom:14px;font:inherit;cursor:pointer}.tile b{display:block;font:600 22px 'Source Serif 4',Georgia,serif;margin-bottom:6px}.tile span{color:var(--mute);font-size:14px}
+.tile{box-shadow:0 12px 28px -18px rgba(0,0,0,.35);transition:transform .15s}.tile:active{transform:scale(.99)}
+.tile.d{border-left:6px solid #e9a23b}.tile.w{border-left:6px solid #4f86b8}
+.pill{display:inline-block;font:600 11px Inter,sans-serif;font-style:normal;letter-spacing:.12em;padding:4px 10px;border-radius:999px;margin-bottom:10px}
+.pd{background:rgba(233,162,59,.22);color:#a8650a}.pw{background:rgba(79,134,184,.2);color:#2d6194}
+:root[data-theme="dark"] .pd{color:#f0b95e}:root[data-theme="dark"] .pw{color:#8fb8e0}
+#theme{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);right:12px;z-index:6;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:18px;cursor:pointer;box-shadow:0 6px 16px -8px rgba(0,0,0,.4)}
+body.view #theme{display:none}
 body.view .ctl{display:none}
 body.view .app{padding:0;max-width:none}
 body.view #holder{border-radius:0}
@@ -52,14 +59,15 @@ body.view #exit{display:block}
 </head>
 <body>
 <button id="exit">Exit</button>
+<button id="theme" aria-label="Switch light or dark mode"></button>
 <div id="launch" class="app">
 <h1 style="font-size:28px;margin-top:36px">Poster Maker</h1>
 <p class="hint" style="font-size:15px;margin:0 0 22px">What would you like to make today?</p>
-<button class="tile" data-go="daily"><b>Word of the Day</b><span>A short quote paired with a Bible verse.</span></button>
-<button class="tile" data-go="weekly"><b>Verses &amp; Decrees</b><span>Verse of the day, week or month, with declarations.</span></button>
+<button class="tile d" data-go="daily"><i class="pill pd">DAILY</i><b>Word of the Day</b><span>A short quote paired with a Bible verse. Made every day.</span></button>
+<button class="tile w" data-go="weekly"><i class="pill pw">WEEKLY / MONTHLY</i><b>Weekly Refresh</b><span>A verse with declarations. Made once a week or once a month.</span></button>
 </div>
 <div class="app" id="main" style="display:none">
-<div class="ctl" style="display:flex;justify-content:space-between;align-items:center"><h1>Poster Maker</h1><button class="chip" id="back">← Back</button></div>
+<div class="ctl" style="display:flex;justify-content:space-between;align-items:center;padding-right:52px"><h1 id="segTitle">Poster Maker</h1><button class="chip" id="back">← Back</button></div>
 
 <div id="holder"><div id="poster">
   <div id="bg"></div><div id="dim"></div>
@@ -75,7 +83,7 @@ body.view #exit{display:block}
 
 <div class="ctl" style="margin-top:14px">
 <div class="card">
-  <div class="chips" id="vtypes"><button class="chip on" data-t="Weekly Refresh">Weekly Refresh</button><button class="chip" data-t="Verse of the Day">Verse of the Day</button><button class="chip" data-t="Verse of the Month">Verse of the Month</button></div>
+  <div class="chips" id="vtypes"><button class="chip on" data-t="Weekly Refresh">Weekly Refresh</button><button class="chip" data-t="Monthly Refresh">Monthly Refresh</button></div>
   <div class="chips" id="modes" style="display:none"><button class="chip on" data-m="weekly">Weekly Refresh</button><button class="chip" data-m="daily">Word of the Day</button></div>
   <label>Title</label><input type="text" id="tag" value="Weekly Refresh">
   <label id="lbV">Verse</label><textarea id="verse">“The LORD shall fight for you, and ye shall hold your peace.”</textarea>
@@ -279,11 +287,20 @@ $('font').onchange=function(){FF=FONTS[this.value];fontChanged()};
 [].forEach.call($('wts').children,function(b){b.onclick=function(){FW=b.dataset.w;[].forEach.call($('wts').children,function(x){x.classList.toggle('on',x===b)});fontChanged()}});
 [].forEach.call($('vtypes').children,function(b){b.onclick=function(){$('tag').value=b.dataset.t;[].forEach.call($('vtypes').children,function(x){x.classList.toggle('on',x===b)});render()}});
 function enter(m){$('launch').style.display='none';$('main').style.display='';
- if(mode!==m)setMode(m);$('vtypes').style.display=m==='weekly'?'':'none';fit();render();window.scrollTo(0,0)}
+ if(mode!==m)setMode(m);$('vtypes').style.display=m==='weekly'?'':'none';
+ [].forEach.call($('vtypes').children,function(x){x.classList.toggle('on',x.dataset.t===$('tag').value)});
+ $('segTitle').innerHTML=m==='daily'?'Word of the Day <i class="pill pd" style="margin:0 0 0 6px">DAILY</i>':'Weekly Refresh <i class="pill pw" style="margin:0 0 0 6px">WEEKLY / MONTHLY</i>';
+ orderShapes(m);applyShape(m==='weekly'?1920:1350);fit();render();window.scrollTo(0,0)}
 [].forEach.call(document.querySelectorAll('.tile'),function(t){t.onclick=function(){enter(t.dataset.go)}});
 $('back').onclick=function(){$('main').style.display='none';$('launch').style.display='';window.scrollTo(0,0)};
-[].forEach.call($('shapes').children,function(b){b.onclick=function(){H=+b.dataset.h;$('poster').style.height=H+'px';[].forEach.call($('shapes').children,function(x){x.classList.toggle('on',x===b)});autoKey='';fit();render()}});
+function applyShape(h){H=h;$('poster').style.height=H+'px';[].forEach.call($('shapes').children,function(x){x.classList.toggle('on',+x.dataset.h===h)});autoKey=''}
+[].forEach.call($('shapes').children,function(b){b.onclick=function(){applyShape(+b.dataset.h);fit();render()}});
+function orderShapes(m){var s=$('shapes');s.appendChild(s.querySelector(m==='weekly'?'[data-h="1350"]':'[data-h="1920"]'))}
 $('outl').addEventListener('change',render);
+var root=document.documentElement;
+function setTheme(t,save){root.setAttribute('data-theme',t);try{if(save)localStorage.setItem('theme',t)}catch(e){}$('theme').textContent=t==='dark'?'\u2600\uFE0F':'\uD83C\uDF19'}
+(function(){var t=null;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';setTheme(t,false)})();
+$('theme').onclick=function(){setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark',true)};
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){render()});
 render();fit();
 </script>
